@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href='https://fonts.googleapis.com/css?family=Poller+One' rel='stylesheet' type='text/css'>
+	<script src="/assets/jquery.js"></script>
+	<style>
+		.beep {
+			width:5px;
+			height:0;
+			border: 5px solid transparent;
+			border-top:10px solid #262C39;
+			border-bottom:80px solid #262C39;
+			position:relative;
+			left:140px;
+		}
+		@keyframes blink {
+			50% {
+				background: radial-gradient(circle, red 15%, transparent 40%), #cc5;
+			}
+		}
+		@-webkit-keyframes blink {
+			50% {
+				background: -webkit-gradient(circle, red 15%, transparent 40%), #cc5;
+			}
+		}
+		@-moz-keyframes blink {
+			50% {
+				background: -moz-gradient(circle, red 15%, transparent 40%), #cc5;
+			}
+		}
+		.laser {
+		  animation: blink .5s infinite;
+		  -webkit-animation: blink .5s infinite;
+		  -moz-animation: blink .5s infinite;
+		}
+		.brain {
+			animation: blink .5s infinite;
+			-webkit-animation: blink .5s infinite;
+			-moz-animation: blink .5s infinite;
+		  background: radial-gradient(circle, white 15%, transparent 40%), #cc5;
+		  background: -moz-radial-gradient(circle, white 15%, transparent 40%), #cc5 
+		  background: -webkit-radial-gradient(circle, white 15%, transparent 40%), #cc5;
+		  background-size: 75px 150px;
+		  height: 150px;
+		  width: 150px;
+		  border-radius: 60px 60px 10px 10px;
+		  border-top: 50px solid #262C39;
+		  border-bottom: 40px double #262C39;
+		  position:relative;
+		  left:70px;
+		}
+		.torso {
+		  height:0px;
+		  width:140px;
+		  border-radius:30px 20px 100px 100px;
+		  border-top:300px solid #cc5;
+		  border-left:75px solid transparent;
+		  border-right:75px solid transparent;
+		}
+		.foot {
+			width:40px;
+			height:40px;
+			background:#262C39;
+			border-radius: 40px;
+			border: 15px solid #999;
+			position:relative;
+			left:110px;
+			top:-10px;
+			z-index:-1;
+		}
+		.robot {
+			position:relative;
+			left:200px;
+		}
+		.left {
+			font-family: 'Poller One', cursive;
+			font-weight:bold;
+			font-size:250px;
+			color:#262C39;
+			transform:rotate(200deg);
+			-webkit-transform:rotate(200deg);
+			-moz-transform:rotate(200def);
+			position:relative;
+			left:-180px;
+			top:-320px;
+			z-index:-1;
+		}
+		.right {
+			font-family: 'Poller One', cursive;
+			font-weight:bold;
+			font-size:250px;
+			color:#262C39;
+			transform:scaleY(-1) rotate(20deg);
+			-webkit-transform:scaleY(-1) rotate(20deg);
+			-moz-transform:scaleY(-1) rotate(20deg);
+			position:relative;
+			left:190px;
+			top:-618px;
+			z-index:-1;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="robot">
+		<div class="beep"></div>
+		<div class="brain"></div>
+		<div class="torso">
+			<div class="left">j</div>
+			<div class="right">j</div>
+		</div>
+		<div class="foot"></div>
+	</div>
+
+	<button class="flash">laser eyes on/off</button>
+	<button class="color">change color!</button>
+	<button class="moves">break/dance</button>
+
+	<script>
+		// When eyes button is clicked, toggle laser class
+		$(".flash").click(function() {
+			$(".brain").toggleClass('.laser');
+		});
+
+		// When color button is clicked, pick a number 0-255
+		$(".color").click(function() {
+			var red = Math.floor(Math.random() * 255);
+			var green = Math.floor(Math.random() * 255);
+			var blue = Math.floor(Math.random() * 255);
+
+			// Generate on RGBA value from red, green, and blue
+			var randomRGBA = 'rgba('+red+','+green+','+blue+', 1)'
+
+			// display the three values in an alert window
+			alert(randomRGBA);
+		});
+	</script>
+</body>
+</html>
